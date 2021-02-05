@@ -13,13 +13,23 @@ var enc = "{\n\
         \"iLOport\": \"local\"\n\
     }\n\
 }";
+var enc2 = "{\n\
+  \"authenticate-password\": {\n\
+    \"userID\" : \"MN30\",\n\
+    \"userPassword\" : \"MN30\"\n\
+    }\n\
+}";
+var dec ="DZCY6ZNdhqO5W4RJlRcTOMH0XaCWWEXH2RrSITp1MTRaSCmhQwyDOTMsbUL2t9w8dDtrdbSMueVRaQ3cZaoUBqZPGbnEFO0S/JzfNN1gi+r5Sb4rVQbIPwz4Kg1xDoSIsmvbEObRheJr0Yyny9MbEcx2owMVaQpG22QVS3R317S4ELGC55azlgH5mFp+Xw4gnbWNbEcoHtrIvCqgQd/Nn1WQYtiPMjN+KMbR/vAAAfZ/L2Ou525CgFsShlTT3sSob0hjbl7xwUC/ldDivOghtSz6ROpseAAazhGSdkBe7dh97f+tKH1H+oeBJF/kogtuwgFBVBhuM2qTlW1I0JIkw6Myh0Ax59Nme5Cr8uPawPnkmSJ4NOp2yrwJbcuen96r"
+var key = "i-SkDaMvDlx_yv-y";
+var iv = "k7B-GtA2kBAW2Uu-";
 
-var dec ="qkrBTpBMAefxLuhEz+iha209TW7qDZ2q5jOH/pnnYz3DPDOnHN/29WI8za107w4Dj8ecFtgdUVSf+1XBMK5FrI7F8QkLZjZkmcb8X51SN/O1ppGCEgKXaXKl5vIVNZHFu7Gw6nyu+zH/QQmezxGhreq058qCjZ5wj8UCE2WwpZi2TSafGmxVPvf3ZxdRK+5tI53fzTjTgDKsBaDYa2hBmx/uy55v8mcXYTZUjSTm23PtCibmMQW7cDQG0hhdNuzv4XpXnX1E7HpatAXTH1hrJiYo8WZAwf9FE7XspF2UmYz8lF2+DusT97RDoDBfmrzusZ0bnbzjUK+Lt/7x32HvaQ=="
+console.log("enc : ",enc2);
+console.log("key : ",key);
+console.log("iv : ",iv);
 
-console.log("enc : ",enc);
-var encryptText = EnDecryption.encrypt(enc); 
+var encryptText = EnDecryption.encrypt(enc2,key,iv); 
 console.log("iv : %s, encrypt : %s",encryptText.iv,encryptText.encryptedData); 
 
-console.log("dec : ",dec);
-var decryptText = EnDecryption.decrypt(dec);
+console.log("dec : ",encryptText.encryptedData);
+var decryptText = EnDecryption.decrypt(encryptText.encryptedData,key,iv);
 console.log("decrypt : %s",decryptText);

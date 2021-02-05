@@ -41,15 +41,13 @@ const key = "1234567891234567"
 const iv = "1234567891234567" 
   
 // An encrypt function 
-exports.encrypt = (text) => { 
-  
+exports.encrypt = (text,key,iv) => { 
+console.log("encrypt  key : ",key);
  // Creating Cipheriv with its parameter 
  let cipher =  crypto.createCipheriv('seed-cbc', Buffer.from(key), iv); 
-  
- // Updating text 
+  // Updating text 
  let encrypted = cipher.update(text); 
-  
- // Using concatenation 
+  // Using concatenation 
  encrypted = Buffer.concat([encrypted, cipher.final()]); 
   
  // Returning iv and encrypted data 
@@ -58,7 +56,7 @@ exports.encrypt = (text) => {
 } 
   
 // A decrypt function 
-exports.decrypt = (text) => { 
+exports.decrypt = (text,key,iv) => { 
   
  //let iv = Buffer.from(text.iv, 'hex'); 
  let encryptedText = 
