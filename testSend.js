@@ -3,8 +3,8 @@ const EnDecryption = require('./EnDecryption.js');
 
 var enc = "{\
   \"authenticate-password\": {\n\
-  \"userID\" : \"MN30\",\n\
-  \"userPassword\" : \"MN30\"\n\
+  \"userID\" : \"test2\",\n\
+  \"userPassword\" : \"cd943dc6fed752ac6e14b8e4ada29f3be7fa4755533057f64cdd7d80c871fb211ff5474be5cb70d4bbba0b7d6bb57617e7a6d01232a5f029111778240114fcef\"\n\
   }\n\
 }";
 var server_url = "http://192.168.0.210:3001/mslm/";

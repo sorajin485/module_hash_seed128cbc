@@ -16,15 +16,24 @@ exports.sha256_base64 = string => {
     return crypto.createHash('sha256').update(string).digest('base64');
 }
 
+//sha256_base64
+exports.sha512_hex = string => {
+  return crypto.createHash('sha512').update(string).digest('hex');
+}
+
+exports.init_pdkdf2 = (salt,string) => {
+  return crypto.pbkdf2Sync(string, salt, 1000, 16 , 'sha256');
+}
+
 //sign up, create salt
-exports.first_pdkdf2 = string => {
-    var buffer =crypto.randomBytes(4);
-    return { salt : buffer ,data : crypto.pbkdf2Sync(string, buffer, 1000, 64, 'sha256') };
+exports.first_pbkdf2 = string => {
+    var buffer =crypto.randomBytes(16);
+    return { salt : buffer.toString('hex') ,data : crypto.pbkdf2Sync(string, buffer, 1000, 16, 'sha256').toString('hex') };
 }
 
 //sign in
-exports.pdkdf2 = (salt,string) => {
-    return crypto.pbkdf2Sync(string, salt, 1000, 16 , 'sha256');
+exports.pbkdf2 = (salt,string) => {
+    return crypto.pbkdf2Sync(string, salt, 1000, 16 , 'sha256').toString('hex');
 }
 
 
